@@ -30,7 +30,8 @@
     <link href="../../admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
     <!-- Bootstrap Select Css -->
     <link href="../../admin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-
+    <!-- Bootstrap Spinner Css -->
+    <link href="../../admin/plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
     <!--bootstrap fileminput-->
     <link href="../../css/file_input/fileinput.min.css" rel="stylesheet" />
     @yield('css')
@@ -52,10 +53,10 @@
 
 
     <!-- Jquery Core Js -->
-    <script src="/admin/plugins/jquery/jquery.min.js">
+    <script src="/admin/plugins/jquery/jquery-3.3.1.min.js">
     </script>
     <!-- Bootstrap Core Js -->
-    <script src="/admin/plugins/bootstrap/js/bootstrap.js">
+    <script src="/admin/plugins/bootstrap/js/bootstrap.min.js">
     </script>
     <!-- Select Plugin Js -->
     <script src="/admin/plugins/bootstrap-select/js/bootstrap-select.js">
@@ -117,29 +118,41 @@
     <script src="../../admin/plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
     <!-- Demo Js -->
-    <script src="/admin/js/demo.js">
-
-    </script>
+    <script src="/admin/js/demo.js"></script>
 
     <!-- Bootstrap file input -->
 
     <script src="/js/file_input/fileinput.min.js"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/themes/fa/theme.min.js"></script>
     <script src="/js/file_input/es.js"></script>
 
+    <!-- Jquery Validation Plugin Css messages_es.js-->
+    <script src="../../admin/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="../../admin/plugins/jquery-validation/localization/messages_es.js"></script>
+
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="../../admin/plugins/jquery-spinner/js/jquery.spinner.js"></script>
+
+
+
+
+    @yield('scriptFileInput')
+
+
     <script type="text/javascript">
-    $ ("#input-id"). fileinput ({
-    language: "es",
-    browseClass: "btn btn-primary btn-lg",
-    showCaption: false,
-    showRemove: false,
-    showUpload: false,
-    showClose: false,
+    $('#form-validate').validate({
 
-    allowedFileExtensions: ["jpg", "png"]
-    });
-
+      highlight: function (input) {
+          $(input).parents('.form-line').addClass('error');
+      },
+      unhighlight: function (input) {
+          $(input).parents('.form-line').removeClass('error');
+      },
+      errorPlacement: function (error, element) {
+          $(element).parents('.form-group').append(error);
+      }
+  });
     </script>
+
 
 
 

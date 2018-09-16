@@ -20,7 +20,7 @@
 				</h2>
 			</div>
 			<div class="body table-responsive">
-				<table class="table table-bordered table-hover js-table">
+				<table class="table table-bordered table-hover js-table dt-responsive">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -46,7 +46,7 @@
 								<button type="button" class="btn btn-primary waves-effect">
 									<i class="material-icons">mode_edit</i>
 								</button>
-								<a id="delete-btn" class="btn btn-danger waves-effect buttonDelete" href="#"
+								<a id="delete-btn" class="btn btn-danger waves-effect buttonDelete" href="{{route('productos.destroy', $pro->id)}}"
 									role="button"><i class="material-icons">delete</i></a>
 								</td>
 							</tr>
@@ -61,6 +61,8 @@
 
 	<!-- #END# Hover Rows -->
 	@stop
+
+	<!-- Inicia el scrip del jstable -->
 	@section('scriptDatatable')
 
 	<script type="text/javascript">
@@ -109,8 +111,6 @@
 	    });
 
 	});
-
-
-
 	</script>
+
 	@stop

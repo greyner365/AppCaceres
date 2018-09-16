@@ -13,7 +13,7 @@
 					</small>
 				</h2>
 			</div>
-			{!! Form::open(['route' => 'productos.store', 'method' => 'POST','files'=>true]) !!}
+			{!! Form::open(['id'=>'form-validate','route' => 'productos.store', 'method' => 'POST', 'files'=>true]) !!}
 			<div class="body">
 				<!--<h2 class="card-inside-title">
 					Basic Examples
@@ -28,9 +28,11 @@
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
-							 {!! Form::select('id_categoria',$categorias, null,['class' =>'form-control show-tick','title'=>'Selecciona una categoria','required'])!!}
+							<div class="form-line">
+							 	{!! Form::select('id_categoria',$categorias, null,['class' =>'form-control show-tick','title'=>'Selecciona una categoria','required'])!!}
 						 	</div>
 						</div>
+					</div>
 			  </div>
 
 				<div class="row clearfix">
@@ -46,17 +48,21 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<div class="form-line">
-								{!! Form::text('precio',null,['class' =>'form-control', 'placeholder' =>'Precio del producto'])!!}
+								{!! Form::number('precio',null,['class' =>'form-control', 'placeholder' =>'Precio del producto','min'=>'1','required'])!!}
 							</div>
+							<div class="help-info">Solo numeros</div>
 						</div>
 					</div>
 					<div class="col-md-6">
-					<div class="form-group">
-						<div class="form-line">
-							{!! Form::text('existencia',null,['class' =>'form-control', 'placeholder' =>'Existencia del producto'])!!}
+						<div class="form-group">
+							<div class="form-line">
+								{!! Form::number('existencia',null,['class' =>'form-control', 'placeholder' =>'Existencia del producto','min'=>'1','required'])!!}
+							</div>
+							<div class="help-info">Solo numeros</div>
 						</div>
 					</div>
-				</div>
+
+
 			</div>
 			<div class="row clearfix">
 				<div class="col-md-12">
@@ -72,20 +78,27 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
-
-
-
-
-
-
-
 			</div>
 		</div>
 	</div>
 </div>
 <!-- #END# Input -->
+@stop
+
+<!-- Inicia el scrip del file input-->
+
+@section('scriptFileInput')
+<script type="text/javascript">
+
+	$ ("#input-id"). fileinput ({
+		language: "es",
+		browseClass: "btn btn-primary btn-lg",
+		showCaption: false,
+		showRemove: false,
+		showUpload: false,
+		showClose: false,
+		allowedFileExtensions: ["jpg", "png"]
+	});
+
+</script>
 @stop

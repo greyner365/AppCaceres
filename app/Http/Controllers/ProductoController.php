@@ -110,6 +110,10 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $producto= Producto::find($id);
+      $producto->delete();
+
+      Session::flash('message','Producto eliminado correctamente');
+      return redirect::to('home/productos');
     }
 }
